@@ -21,14 +21,19 @@
     <script src="src/thermostat.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script> var t = new Thermostat();</script>
+    <script>
+      $(document).ready(function(){
+        updateTemp();
+      });
+    </script>
+
 
     <div class="container" >
-      <h1>Temperature: <script>document.write(t.temperature);</script></h1>
+      <h1>Temperature: <input type="text" id="temperature" value="" readonly></h1>
     </div>
     <div class="container" >
-      <button id="raise-button" class="btn btn-primary" onclick="t.decreaseTemperature();">Lower Temperature</button>
-      <button class="btn btn-danger" onclick="t.increaseTemperature();">Raise Temperature</button>
+      <button id="raise-button" class="btn btn-primary" onclick="t.decreaseTemperature(); updateTemp();">Lower Temperature</button>
+      <button class="btn btn-danger" onclick="t.increaseTemperature(); updateTemp();">Raise Temperature</button>
     </div>
     <br>
     <div class="container" >

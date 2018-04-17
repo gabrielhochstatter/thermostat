@@ -21,7 +21,8 @@ function Thermostat() {
 Thermostat.prototype.increaseTemperature = function() {
   if (this.powerSavingMode === true &&
     this.temperature === this.maximumTemperaturePowerSaving) {
-    throw new Error("temperature is at maximum for power saving mode!");
+    var maxTempError = new Error("temperature is at maximum for power saving mode!");
+    throw maxTempError;
   }
   else if (this.temperature === this.maximumTemperature) {
     throw new Error("temperature is already at maximum!");
@@ -42,4 +43,11 @@ Thermostat.prototype.togglePowerSaving = function() {
 
 Thermostat.prototype.resetTemperature = function() {
   this.temperature = this.DEFAULT_TEMPERATURE;
+};
+
+var t = new Thermostat();
+
+function updateTemp(){
+  temp = t.temperature;
+  document.getElementById('temperature').value = temp;
 };
