@@ -8,8 +8,17 @@ describe("Thermostat", function() {
         it("changes _powerSavingMode to false", function() {
           var t = new Thermostat();
           t.togglePowerSaving();
-          // debugger;
           expect(t._powerSavingMode).not.toBe(true);
+        });
+
+      });
+
+    describe("resetTemperature", function() {
+        it("resets temperature back to 20", function() {
+          var t = new Thermostat();
+          t._temperature = 30;
+          t.resetTemperature();
+          expect(t._temperature).toEqual(t.DEFAULT_TEMPERATURE);
         });
 
       });
@@ -22,11 +31,19 @@ describe("Thermostat", function() {
           expect(t._temperature).toEqual(21);
         });
 
-        it("never goes above maximTemperature", function() {
+        it("never goes above maximumTemperature", function() {
           var t = new Thermostat();
+          t.togglePowerSaving();
           t._temperature = 32;
           // debugger;
           expect(function(){ t.increaseTemperature(); }).toThrowError("temperature is already at maximum!");
+        });
+
+        it("never goes above 25 in _powerSavingMode", function() {
+          var t = new Thermostat();
+          t._temperature = 25;
+          // debugger;
+          expect(function(){ t.increaseTemperature(); }).toThrowError("temperature is at maximum for power saving mode!");
         });
       });
 
@@ -45,5 +62,7 @@ describe("Thermostat", function() {
           expect(function(){ t.decreaseTemperature(); }).toThrowError("temperature is already at minimum!");
         });
       });
+
+
 
   });
