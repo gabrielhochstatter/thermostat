@@ -5,6 +5,17 @@ function Thermostat() {
   this._maximumTemperature = 32;
   this._maximumTemperaturePowerSaving = 25;
   this._powerSavingMode = true;
+  this._currentEnergyUsage = function() {
+    if (this._temperature < 18) {
+      return "low-usage";
+    }
+    else if (this._temperature < 25) {
+      return "medium-usage";
+    }
+    else {
+      return "high-usage";
+    }
+  };
 };
 
 Thermostat.prototype.increaseTemperature = function() {

@@ -23,6 +23,27 @@ describe("Thermostat", function() {
 
       });
 
+    describe("_currentEnergyUsage", function() {
+        it("returns low-usage when temp is under 18", function() {
+          var t = new Thermostat();
+          t._temperature = 17;
+          expect(t._currentEnergyUsage()).toEqual('low-usage');
+        });
+
+        it("returns medium-usage when temp is between 18 and 25", function() {
+          var t = new Thermostat();
+          t._temperature = 22;
+          expect(t._currentEnergyUsage()).toEqual('medium-usage');
+        });
+
+        it("returns high-usage when temp is over 25", function() {
+          var t = new Thermostat();
+          t._temperature = 31;
+          expect(t._currentEnergyUsage()).toEqual('high-usage');
+        });
+
+      });
+
     describe("increaseTemperature", function() {
         it("inceases temperature by 1 when called", function() {
           var t = new Thermostat();
