@@ -7,13 +7,21 @@ function Thermostat() {
   this.powerSavingMode = true;
   this.currentEnergyUsage = function() {
     if (this.temperature < 18) {
-      return "low-usage";
+      return "low";
     }
     else if (this.temperature < 25) {
-      return "medium-usage";
+      return "medium";
     }
     else {
-      return "high-usage";
+      return "high";
+    }
+  };
+
+  this.isPowerSavingOn = function() {
+    if (this.powerSavingMode === true) {
+      return "On";
+    } else {
+      return "Off";
     }
   };
 };
@@ -38,16 +46,28 @@ Thermostat.prototype.decreaseTemperature = function() {
 };
 
 Thermostat.prototype.togglePowerSaving = function() {
-  this.powerSavingMode ^= true;
+  this.powerSavingMode = !this.powerSavingMode;
 };
 
 Thermostat.prototype.resetTemperature = function() {
   this.temperature = this.DEFAULT_TEMPERATURE;
 };
 
+Thermostat.prototype.isHighUsage = function() {
+  this.currentEnergyUsage === "high"
+}
+
+Thermostat.prototype.isMediumUsage = function() {
+  this.currentEnergyUsage === "medium"
+}
+
+Thermostat.prototype.isLowUsage = function() {
+  this.currentEnergyUsage === "low"
+}
+
 var t = new Thermostat();
 
-function updateTemp(){
-  temp = t.temperature;
-  document.getElementById('temperature').value = temp;
-};
+// function updateTemp(){
+//   temp = t.temperature;
+//   document.getElementById('temperature').value = temp;
+// };
