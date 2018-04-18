@@ -46,6 +46,9 @@ Thermostat.prototype.decreaseTemperature = function() {
 };
 
 Thermostat.prototype.togglePowerSaving = function() {
+  if (this.temperature > this.maximumTemperaturePowerSaving) {
+    this.temperature = this.maximumTemperaturePowerSaving;
+  }
   this.powerSavingMode = !this.powerSavingMode;
 };
 
