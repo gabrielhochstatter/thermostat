@@ -68,6 +68,10 @@ Thermostat.prototype.isLowUsage = function() {
   this.currentEnergyUsage === "low"
 }
 
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 var t = new Thermostat();
 
 // function updateTemp(){

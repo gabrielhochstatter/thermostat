@@ -13,37 +13,52 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
-    <div class="container" >
-      <h1>Temperature: <span id="temperature"></span></h1>
+    <div class="container text-center" >
+      <h1>Temperature:</h1>
     </div>
-    <div class="container" >
+    <div class="container text-center" >
+      <h1 id="temperature" style="font-size: 200px"></h1>
+    </div>
+    <div class="container text-center" >
       <button id="lower-button" class="btn btn-primary">Lower Temperature</button>
       <button id="raise-button" class="btn btn-danger">Raise Temperature</button>
     </div>
     <br>
-    <div class="container" >
+    <div class="container text-center" >
       <button id="power-saving-button" class="btn btn-success" data-toggle="button">
         Power Saving Mode <span id="power-saving-on-off">On</span>
       </button>
       <button id="reset-button" class="btn btn-secondary">Reset</button>
     </div>
     <br>
-    <div class="container">
+    <div class="container text-center">
       <h3>Current Usage: <span id='usage-text'></span></h3>
-      
+    </div>
+    <br>
+    <div id="max-temp-warning" class="container text-center col-lg-3">
+      <div class="alert alert-danger" role="alert">
+        <strong class="text-center">Warning:</strong> Maximum temperature!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        </button>
+      </div>
+    </div>
+
       <script>
+        $('#max-temp-warning').hide();
+
         $('#temperature').text(function() {
           return t.temperature;
         });
 
         $('#usage-text').text(function(){
-          return t.currentEnergyUsage();
+          return t.currentEnergyUsage().capitalize();
         });
 
         $('#lower-button').click(function(){
           t.decreaseTemperature();
+          $('#max-temp-warning').hide();
           $('#usage-text').text(function(){
-            return t.currentEnergyUsage();
+            return t.currentEnergyUsage().capitalize();
           });
 
           $('#temperature').text(function() {
@@ -53,8 +68,9 @@
 
         $('#raise-button').click(function(){
           t.increaseTemperature();
+
           $('#usage-text').text(function(){
-            return t.currentEnergyUsage();
+            return t.currentEnergyUsage().capitalize();
           });
 
           $('#temperature').text(function() {
@@ -65,7 +81,7 @@
         $('#reset-button').click(function(){
           t.resetTemperature();
           $('#usage-text').text(function(){
-            return t.currentEnergyUsage();
+            return t.currentEnergyUsage().capitalize();
           });
 
           $('#temperature').text(function() {
@@ -85,9 +101,6 @@
         });
 
       </script>
-
-    </div>
-
 
   </body>
 </html>
