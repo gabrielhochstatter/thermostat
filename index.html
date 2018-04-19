@@ -38,6 +38,13 @@
       <h3>Current Usage: <span id='usage-text'></span></h3>
     </div>
     <br>
+    <div class="container text-center">
+      <script>
+        $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=1f938a6740ff6fb79c06cc531fa0b5b5&mode=html', function(weather){
+          $('#weather-widget').html(weather);
+      })</script>
+      <div id='weather-widget'></div>
+    </div>
     <div id="max-temp-warning" class="container text-center col-lg-3">
       <div class="alert alert-danger" role="alert">
         <strong class="text-center">Warning:</strong> Maximum temperature!

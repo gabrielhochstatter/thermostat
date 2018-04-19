@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 
 function Thermostat() {
   this.DEFAULT_TEMPERATURE = 20
