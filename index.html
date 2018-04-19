@@ -20,8 +20,8 @@
       <h1 id="temperature" style="font-size: 200px"></h1>
     </div>
     <div class="container text-center" >
-      <button id="lower-button" class="btn btn-primary">Lower Temperature</button>
-      <button id="raise-button" class="btn btn-danger">Raise Temperature</button>
+      <button id="lower-button" class="btn btn-primary"><span class="glyphicon glyphicon-minus"></span> Minus</button>
+      <button id="raise-button" class="btn btn-danger"><span class="glyphicon glyphicon-plus"></span> Plus</button>
     </div>
     <br>
     <div class="container text-center" >
@@ -40,10 +40,17 @@
     <br>
     <div class="container text-center">
       <script>
-        $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=1f938a6740ff6fb79c06cc531fa0b5b5&mode=html', function(weather){
-          $('#weather-widget').html(weather);
+        var city = "London";
+        $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=1f938a6740ff6fb79c06cc531fa0b5b5', function(weather){
+          // var weatherInfo = JSON.parse(weather)
+          // debugger;
+          $('#weather-city').text(weather.name);
+          $('#weather-type').text(weather.weather[0].main);
+          $('#weather-temp').text(Math.floor(weather.main.temp - 273));
       })</script>
-      <div id='weather-widget'></div>
+      <div>
+        <p>Weather in: <span id="weather-city"></span></p>
+        <p><span id="weather-type"></span> <span id="weather-temp"></span>ºC</p></div>
     </div>
     <div id="max-temp-warning" class="container text-center col-lg-3">
       <div class="alert alert-danger" role="alert">
