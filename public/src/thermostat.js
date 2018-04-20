@@ -2,7 +2,7 @@
 "use strict";
 
 function Thermostat() {
-  this.DEFAULT_TEMPERATURE = 20
+  this.DEFAULT_TEMPERATURE = 20;
   this.temperature = this.DEFAULT_TEMPERATURE;
   this.minimumTemperature = 10;
   this.maximumTemperature = 32;
@@ -89,8 +89,3 @@ String.prototype.capitalize = function() {
 
 
 var t = new Thermostat();
-
-// function updateTemp(){
-//   temp = t.temperature;
-//   document.getElementById('temperature').value = temp;
-// };
