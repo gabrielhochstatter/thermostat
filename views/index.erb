@@ -64,9 +64,9 @@
 
         var percentage = (100/22) * (t.temperature - 10);
 
-        $('#bar').css("width", percentage.toString() + "%");
+        $('#bar').css("width", percentage.toString() + "%").css("background-color", t.color());
 
-        $('#bar').css("background-color", t.color());
+        // $('#bar').css("background-color", t.color());
 
         $('#usage-text').css("color", t.color());
 
@@ -92,8 +92,7 @@
           });
 
           percentage = (100/22) * (t.temperature - 10);
-          $('#bar').css("width", percentage.toString() + "%");
-          $('#bar').css("background-color", t.color());
+          $('#bar').css("width", percentage.toString() + "%").css("background-color", t.color());
         });
 
         $('#raise-button').click(function(){
@@ -110,8 +109,7 @@
           });
 
           percentage = (100/22) * (t.temperature - 10);
-          $('#bar').css("width", percentage.toString() + "%");
-          $('#bar').css("background-color", t.color());
+          $('#bar').css("width", percentage.toString() + "%").css("background-color", t.color());
         });
 
         $('#reset-button').click(function(){
@@ -127,8 +125,7 @@
           });
 
           percentage = (100/22) * (t.temperature - 10);
-          $('#bar').css("width", percentage.toString() + "%");
-          $('#bar').css("background-color", t.color());
+          $('#bar').css("width", percentage.toString() + "%").css("background-color", t.color());
         });
 
         $('#power-saving-button').click(function(){
@@ -144,8 +141,7 @@
           });
 
           percentage = (100/22) * (t.temperature - 10);
-          $('#bar').css("width", percentage.toString() + "%");
-          $('#bar').css("background-color", t.color());
+          $('#bar').css("width", percentage.toString() + "%").css("background-color", t.color());
         });
 
       </script>
