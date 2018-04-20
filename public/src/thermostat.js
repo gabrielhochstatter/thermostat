@@ -20,6 +20,18 @@ function Thermostat() {
     }
   };
 
+  this.color = function() {
+    if (this.temperature < 18) {
+      return "#05c10d";
+    }
+    else if (this.temperature < 25) {
+      return "#ffa800";
+    }
+    else {
+      return "#ff0000";
+    }
+  };
+
   this.isPowerSavingOn = function() {
     if (this.powerSavingMode === true) {
       return "On";
@@ -61,19 +73,20 @@ Thermostat.prototype.resetTemperature = function() {
 
 Thermostat.prototype.isHighUsage = function() {
   this.currentEnergyUsage === "high"
-}
+};
 
 Thermostat.prototype.isMediumUsage = function() {
   this.currentEnergyUsage === "medium"
-}
+};
 
 Thermostat.prototype.isLowUsage = function() {
   this.currentEnergyUsage === "low"
-}
+};
 
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
-}
+};
+
 
 var t = new Thermostat();
 

@@ -75,9 +75,15 @@ String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-var t = new Thermostat();
+Thermostat.prototype.colorOutput = function() {
+  if (this.isHighUsage) {
+    return "#ff0000";
+  } else if (this.isMediumUsage) {
+    return "#fffc00";
+  } else {
+    return "#05c10d";
+  }
+}
 
-// function updateTemp(){
-//   temp = t.temperature;
-//   document.getElementById('temperature').value = temp;
-// };
+
+var t = new Thermostat();
